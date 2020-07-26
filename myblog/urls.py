@@ -18,10 +18,13 @@ from django.urls import path,include
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
+from . import views
 
 
 
 urlpatterns = [
+    url(r'^$', views.project_index,name="project_index"),
+    path("<int:pk>/",views.project_detail,name="project_detail"),
     url(r'^admin/', admin.site.urls),
     path("projects/",include("projects.urls")),
     path("blog/",include("blog.urls")),
