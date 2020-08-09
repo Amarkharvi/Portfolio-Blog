@@ -39,9 +39,6 @@ def blog_detail(request,pname):
 				)
 			comment.save()
 	
-
-
-	
 	comments=Comment.objects.filter(post=post)
 	context={
 			"post":post,
