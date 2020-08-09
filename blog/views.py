@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from blog.models import Post,Comment
 from .forms import CommentForm
+from django.http import HttpResponseRedirect, HttpResponse
 from django.views.generic import DetailView
 
 
@@ -23,9 +24,11 @@ def blog_category(request,category):
 	}
 	return render(request,"blog_category.html",context)
 
-def blog_detail(request,pk):
-	post=Post.objects.get(pk=pk)
+def blog_detail(request,pname):
+	post=Post.objects.get(pname__contains=pname)
 	form=CommentForm()
+
+	
 	if request.method =='POST':
 		form=CommentForm(request.POST)
 		if form.is_valid():
@@ -35,13 +38,20 @@ def blog_detail(request,pk):
 				post=post
 				)
 			comment.save()
+	
 
+
+	
 	comments=Comment.objects.filter(post=post)
 	context={
-		"post":post,
-		"comments":comments,
-		"form":form,
-	}
-	return render(request,"blog_detail.html",context)	
+			"post":post,
+			"comments":comments,
+			"form":form,
+		}
+	return render(request,"blog_detail.html",context)
+
+		
+
+		
 
 			

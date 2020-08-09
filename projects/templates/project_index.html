@@ -132,7 +132,7 @@ a{
   text-align:center;
   }
   </style>
-}
+
 
 </head>
 <body>
@@ -141,21 +141,23 @@ a{
 <div class="container-fluid">
 
 <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4">
+ {% block content %} 
 {% for project in projects %}
 	<div class="col-md-4">
-		<div class="card bg-white text-dark mb-2">
+		<div class="card bg-white text-dark mb-4">
 			<img class="card-img-top" src="{{ project.image.url}}">
 			<div class="card-body">
 				<h5 class="card-title">{{project.title}}</h5>
 				<p class="card-text">{{project.descriptiom | striptags | safe }}</p>
-				<a href="{% url 'project_detail' project.pk %}"
+				<a href="{% url 'project_detail' project.pname %}"
 				class="btn btn-primary">
 				Read More
 				</a>
 				</div>
 				</div>
 				</div>
-				{% endfor %}	
+				{% endfor %}
+        {% endblock %}	
 			</div>
 		</div>
 </div>
@@ -178,7 +180,7 @@ a{
                 </a>
                 <div class="contact-box-footer">
                     <div class="m-t-xs btn-group">
-                        <a class="btn btn-xs btn-white" href="tel:91 9110810846"><i class="fa fa-phone"></i></a>
+                        <a class="btn btn-xs btn-white" href="https://api.whatsapp.com/send?phone=919902142421&amp;text=Hi there! I have a question :)"><i class="fa fa-whatsapp"></i></a>
                         <a class="btn btn-xs btn-white"
                         href="mailto:amarkharvi316@gmail.com"><i class="fa fa-envelope"></i></a>
                         <a class="btn btn-xs btn-white" href=""><i class="fa fa-linkedin"></i></a>
