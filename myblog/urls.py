@@ -27,6 +27,7 @@ urlpatterns = [
     path("<int:pk>/",views.project_detail,name="project_detail"),
     url(r'^admin/', admin.site.urls),
     path("projects/",include("projects.urls")),
+    path("",include("users.urls")),
     path("blog/",include("blog.urls")),
     path('ckeditor/', include(
         'ckeditor_uploader.urls')),

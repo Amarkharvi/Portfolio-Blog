@@ -33,6 +33,7 @@ DEBUG = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'users.apps.UsersConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'art.apps.ArtConfig',
+    'crispy_forms'
    
 ]
 
@@ -66,7 +68,7 @@ ROOT_URLCONF = 'myblog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["myblog/templates/"],
+        'DIRS': ["myblog/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -87,8 +89,12 @@ WSGI_APPLICATION = 'myblog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'pentdb',
+        'HOST':'localhost',
+        'USER':'postgres',
+        'PASSWORD':'Amtk6592',
+        'PORT':''
     }
 }
 
@@ -131,4 +137,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+CRISPY_TEMPLATE_PACK='bootstrap4'
 
+LOGIN_REDIRECT_URL='project_index'
+LOGIN_URL ='login'
