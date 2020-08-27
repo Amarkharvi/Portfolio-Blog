@@ -8,7 +8,6 @@ class Category(models.Model):
 		return self.name
 
 class Post(models.Model):
-	pname=models.CharField(max_length=50,null=True)
 	title=models.CharField(max_length=225)
 	body=RichTextUploadingField(blank=True)
 	created_on=models.DateTimeField(auto_now_add=True)

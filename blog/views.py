@@ -24,8 +24,8 @@ def blog_category(request,category):
 	}
 	return render(request,"blog_category.html",context)
 
-def blog_detail(request,pname):
-	post=Post.objects.get(pname__contains=pname)
+def blog_detail(request,title):
+	post=Post.objects.get(title__contains=title)
 	form=CommentForm()
 
 	

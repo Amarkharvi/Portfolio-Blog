@@ -6,14 +6,13 @@
         {{ post.created_on.date }} |&nbsp;
         Categories:&nbsp;
         {% for category in post.categories.all %}
-        <a href="{% url 'blog_category' category.name %}">
             {{ category.name }}
         </a>&nbsp;
         {% endfor %}
     </small>
     <p>{{ post.body | safe }}</p>
     <h3>Leave a comment:</h3>
-    <form action="/blog/{{ post.pname }}/" method="post">
+    <form action="/blog/{{ post.title }}/" method="post">
         {% csrf_token %}
         <div class="form-group">
             {{ form.author }}
