@@ -148,8 +148,8 @@ a{
 			<img class="card-img-top" src="{{ project.image.url}}">
 			<div class="card-body">
 				<h5 class="card-title">{{project.title}}</h5>
-				<p class="card-text">{{project.descriptiom | striptags | safe }}</p>
-				<a href="{% url 'project_detail' project.pname %}"
+				<p class="card-text">{{project.description | striptags | safe }}</p>
+				<a href="{% url 'project_detail' project.title %}"
 				class="btn btn-primary">
 				Read More
 				</a>

@@ -7,8 +7,8 @@ def project_index(request):
 		'projects':projects
 	}
 	return render(request,'project_index.html',context)
-def project_detail(request,pname):
-	project=Project.objects.get(pname__contains=pname)
+def project_detail(request,title):
+	project=Project.objects.get(title__title__icontains=title)
 	context={
 		'project':project
 	}

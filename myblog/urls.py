@@ -24,7 +24,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.project_index,name="project_index"),
-    path("<int:pk>/",views.project_detail,name="project_detail"),
+    path("<title>/",views.project_detail,name="project_detail"),
     url(r'^admin/', admin.site.urls),
     path("projects/",include("projects.urls")),
     path("",include("users.urls")),
