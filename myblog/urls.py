@@ -18,19 +18,23 @@ from django.urls import path,include
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
-from . import views
+from projects import views as pview
 
 
 
 urlpatterns = [
-    url(r'^$', views.project_index,name="project_index"),
-    path("<title>/",views.project_detail,name="project_detail"),
+    url(r'^$', pview.project_index,name="project_index"),
     url(r'^admin/', admin.site.urls),
-    path("projects/",include("projects.urls")),
     path("",include("users.urls")),
+    path("projects/",include("projects.urls")),
     path("blog/",include("blog.urls")),
-    path('ckeditor/', include(
-        'ckeditor_uploader.urls')),
     path("art/", include("art.urls")),
-] + static(settings.MEDIA_URL, 
-           document_root=settings.MEDIA_ROOT)
+    path("<title>/",pview.project_detail,name="project_detail"),
+    path('ckeditor/', include(
+        'ckeditor_uploader.urls')),   
+] 
+
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
