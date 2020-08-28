@@ -6,10 +6,11 @@
     {% for post in posts %}
     <h2><a href="{% url 'blog_detail' post.title %}">{{ post.title }}</a></h2>
     <small>
+        <strong>Posted by <a href="#"><u>{{ post.user }}</u></a></strong> on
         {{ post.created_on.date }} |&nbsp;
         Categories:&nbsp;
         {% for category in post.categories.all %}
-            {{ category.name }}
+            <strong>{{ category.name }}</strong>
         </a>&nbsp;
         {% endfor %}
     </small>
