@@ -149,7 +149,7 @@ a{
 			<div class="card-body">
 				<h5 class="card-title">{{project.title}}</h5>
 				<p class="card-text">{{project.description | striptags | safe }}</p>
-				<a href="{% url 'project_detail' project.title %}"
+				<a href="{% url 'blog_detail' project.title %}"
 				class="btn btn-primary">
 				Read More
 				</a>

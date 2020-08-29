@@ -29,7 +29,6 @@ urlpatterns = [
     path("projects/",include("projects.urls")),
     path("blog/",include("blog.urls")),
     path("art/", include("art.urls")),
-    path("<title>/",pview.project_detail,name="project_detail"),
     path('ckeditor/', include(
         'ckeditor_uploader.urls')),   
 ] 

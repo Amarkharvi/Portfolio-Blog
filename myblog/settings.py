@@ -141,3 +141,19 @@ CRISPY_TEMPLATE_PACK='bootstrap4'
 
 LOGIN_REDIRECT_URL='project_index'
 LOGIN_URL ='login'
+
+CKEDITOR_CONFIGS={
+    'default':{
+        'toolbar':'Custom',
+        'width':'auto',
+        'toolbar_Custom':[
+            ['Bold','Image','Format','Font','FontSize',
+            'Styles','Underline',
+            'BulletedList','Link','HorizonlatRule',
+            'Smiley','CodeSnippet'],
+        ],
+            'extraPlugins':'codesnippet',
+
+        
+    }
+}

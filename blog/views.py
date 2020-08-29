@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from blog.models import Post,Comment
-from .forms import CommentForm
+from .forms import CommentForm,PostForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django.views.generic import DetailView
 
@@ -38,7 +38,10 @@ def blog_detail(request,title):
 	return render(request,"blog_detail.html",context)
 
 		
-
+def add_post(request):
+	form=PostForm(user=request.user)
+	
+	return render(request,'add_post.html',{'form':form})
 		
 
 			
