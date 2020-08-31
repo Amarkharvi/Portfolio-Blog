@@ -39,7 +39,15 @@ def blog_detail(request,title):
 
 		
 def add_post(request):
-	form=PostForm(user=request.user)
+	if request.method=="POST":
+		form=PostForm(request.POST)
+		if form.is_valid():
+			Post=form.save(commit=False)
+			Post.author=request.user
+			Post=Post.save()
+			redirect('blog_index')
+	form=PostForm()		
+
 	
 	return render(request,'add_post.html',{'form':form})
 		

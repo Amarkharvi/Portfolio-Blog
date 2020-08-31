@@ -11,6 +11,8 @@ class Project(models.Model):
 	def __str__(self):
 		return f'{self.title}'
 
+
+
 	def save(self,**kwargs):
          super().save()
 
@@ -19,3 +21,5 @@ class Project(models.Model):
              output_size= (300,300)
              img.thumbnail(output_size)
              img.save(self.image.path)	
+
+	
