@@ -1,19 +1,35 @@
 {% extends "base.html" %}
 {% block page_content %}
+<style>
+    button1{
+        float: right;
+
+    }
+
+</style>
 <div class="col-md-8 offset-md-2">
-    <h1>{{ post.title }}</h1>
+    <h1 >{{ post.title }}
+        {% if request.user == post.author %}
+        <button1 class="btn btn-primary" type="submit" onclick="window.location.href='{% url 'update_post' post.title post.pk %}'"> Edit Post</button1>
+        <button1 class="btn btn-danger" type="submit" onclick="window.location.href='{% url 'delete_post' post.pk %}'"> delete Post</button1>
+
+    {% endif %}
+    </h1><br>
+
+    
     <small>
         <strong>Posted by <a href="#"><u>{{ post.author }}</u></a></strong> on
         {{ post.created_on.date }} |&nbsp;
         Categories:&nbsp;
         {% for category in post.categories.all %}
+            
             {{ category.name }}
         </a>&nbsp;
         {% endfor %}
     </small>
     <p>{{ post.body | safe }}</p>
     <h3>Leave a comment:</h3>
-    <form action="/blog/{{ post.title }}/" method="post">
+    <form action="/blog/{{ post.title}}/{{post.pk}}/" method="post">
         {% csrf_token %}
         <div class="form-group">
             {{ form.author }}
@@ -21,7 +37,10 @@
         <div class="form-group">
             {{ form.body }}
         </div>
+    
         <button type="submit" class="btn btn-primary">Submit</button>
+        <br>
+        <hr>
     </form>
     <h3>Comments:</h3>
     {% for comment in comments %}

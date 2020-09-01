@@ -4,8 +4,8 @@
     <h1>Blog Index</h1>
     <hr>
     {% for post in posts %}
-    <h2><a href="{% url 'blog_detail' post.title %}">{{ post.title }}</a></h2>
-    <small>
+    <hr>
+     <small>
         <strong>Posted by <a href="#"><u>{{ post.author }}</u></a></strong> on
         {{ post.created_on.date }} |&nbsp;
         Categories:&nbsp;
@@ -14,6 +14,8 @@
         </a>&nbsp;
         {% endfor %}
     </small>
+    <h2><a href="{% url 'blog_detail' post.title post.pk %}">{{ post.title }}</a></h2>
+   
     <p>{{ post.body| striptags | safe | slice:":400" }}...</p>
     {% endfor %}
 </div>

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block page_content %}
+<div class="container">
+    <div class="content-section">
+    <div class="container">
+    <form method="post">
+    {% csrf_token %}
+    {{ form }}
+
+    Are you sure you want to delete the following post?:<br><br>
+    {{ post.title }}?<br><br>
+
+    <button class="btn btn-warning" type="submit">Delete</button>
+    <a href="{% url 'blog_detail' post.title post.pk %}">Cancel</a>
+</form>
+    </div>
+    
+  </div>
+  </div>
+
+  
+{% endblock page_content %}

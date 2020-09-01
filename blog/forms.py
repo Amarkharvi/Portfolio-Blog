@@ -1,7 +1,10 @@
 from django import forms
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from ckeditor_uploader.fields import RichTextUploadingField
-from .models import Post
+from .models import Post,Category
+
+
+
 class CommentForm(forms.Form):
     author = forms.CharField(
         max_length=60,
@@ -18,15 +21,21 @@ class CommentForm(forms.Form):
     )
 
 class PostForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-         self.user = kwargs.pop('user',None)
-         super(PostForm, self).__init__(*args, **kwargs)
-    body=forms.Textarea()
+    categories=forms.ModelChoiceField(queryset=Category.objects.all())
     class Meta:
         model=Post
-        fields=[
-            'title',
-            'body',
-            'categories',
-        ]
+        fields=['title','body','categories']
+   
 
+class UpdatePost(forms.ModelForm):
+    categories=forms.ModelChoiceField(queryset=Category.objects.all())
+    
+    class Meta:
+        model=Post
+        fields=['title','body','categories']
+
+class DeletePost(forms.ModelForm):
+    class Meta:
+        model=Post
+        fields=[]
+    

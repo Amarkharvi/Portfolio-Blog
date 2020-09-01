@@ -142,12 +142,10 @@ CRISPY_TEMPLATE_PACK='bootstrap4'
 LOGIN_REDIRECT_URL='project_index'
 LOGIN_URL ='login'
 
-CKEDITOR_RISTRICT_BY_USER=True
 CKEDITOR_BROWSE_SHOW_DIRS=True
 CKEDITOR_CONFIGS={
     'default':{
         'toolbar':'Custom',
-        'filebrowserBrowseUrl':'',
         'width':'auto',
         'toolbar_Custom':[
             ['Bold','Image','Format','Font','FontSize',
