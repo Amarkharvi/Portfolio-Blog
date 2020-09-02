@@ -31,7 +31,6 @@ urlpatterns = [
     path("",include("users.urls")),
     path("projects/",include("projects.urls")),
     path("blog/",include("blog.urls")),
-    path("art/", include("art.urls")),
     url(r'^ckeditor/upload/', login_required(ckeditor_views.upload), name='ckeditor_upload'),
     url(r'^ckeditor/browse/', never_cache(login_required(ckeditor_views.browse)), name='ckeditor_browse'),   
 ] 

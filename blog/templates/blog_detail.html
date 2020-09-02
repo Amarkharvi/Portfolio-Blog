@@ -3,15 +3,15 @@
 <style>
     button1{
         float: right;
-
+        font-display: inherit;
     }
 
 </style>
 <div class="col-md-8 offset-md-2">
     <h1 >{{ post.title }}
         {% if request.user == post.author %}
-        <button1 class="btn btn-primary" type="submit" onclick="window.location.href='{% url 'update_post' post.title post.pk %}'"> Edit Post</button1>
-        <button1 class="btn btn-danger" type="submit" onclick="window.location.href='{% url 'delete_post' post.pk %}'"> delete Post</button1>
+        <button1 class="btn btn-outline-primary" type="submit" onclick="window.location.href='{% url 'update_post' post.title post.pk %}'"> Edit Post</button1>
+        <button1 class="btn btn-outline-danger" type="submit" onclick="window.location.href='{% url 'delete_post' post.pk %}'"> delete Post</button1>
 
     {% endif %}
     </h1><br>
@@ -19,14 +19,16 @@
     
     <small>
         <strong>Posted by <a href="#"><u>{{ post.author }}</u></a></strong> on
-        {{ post.created_on.date }} |&nbsp;
+        {{ post.created_on.date}} at {{post.created_on.time}} <br>
+        Last modified : {{post.last_modified.date}} at {{post.last_modified.time}} &nbsp;<br>
         Categories:&nbsp;
         {% for category in post.categories.all %}
             
-            {{ category.name }}
+           <strong> {{ category.name }}</strong>
         </a>&nbsp;
         {% endfor %}
     </small>
+    <hr>
     <p>{{ post.body | safe }}</p>
     <h3>Leave a comment:</h3>
     <form action="/blog/{{ post.title}}/{{post.pk}}/" method="post">
@@ -45,7 +47,7 @@
     <h3>Comments:</h3>
     {% for comment in comments %}
     <p>
-        On {{comment.created_on.date }}&nbsp;
+        On {{comment.created_on.date }} at {{comment.created_on.time}}&nbsp;
         <b>{{ comment.author }}</b> wrote:
     </p>
     <p>{{ comment.body }}</p>
