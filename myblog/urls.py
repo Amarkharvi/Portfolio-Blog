@@ -18,7 +18,7 @@ from django.urls import path,include
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
-from projects import views as pview
+from blog import views as view
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache
 from ckeditor_uploader import views as ckeditor_views
@@ -26,10 +26,9 @@ from ckeditor_uploader import views as ckeditor_views
 
 
 urlpatterns = [
-    url(r'^$', pview.project_index,name="project_index"),
+    url(r'^$', view.blog_index,name="blog_index"),
     url(r'^admin/', admin.site.urls),
     path("",include("users.urls")),
-    path("projects/",include("projects.urls")),
     path("blog/",include("blog.urls")),
     url(r'^ckeditor/upload/', login_required(ckeditor_views.upload), name='ckeditor_upload'),
     url(r'^ckeditor/browse/', never_cache(login_required(ckeditor_views.browse)), name='ckeditor_browse'),   

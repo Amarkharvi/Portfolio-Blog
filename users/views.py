@@ -23,7 +23,7 @@ def register(request):
 
 def Login(request):
     if request.user.is_authenticated:
-        return redirect('project_index')
+        return redirect('blog_index')
 
     if request.method =='POST':
         username=request.POST['username']
@@ -37,7 +37,7 @@ def Login(request):
         if user is not None:
             form=login(request,user)
             messages.success(request,f'Welcome {username}')
-            return redirect('project_index')
+            return redirect('blog_index')
 
 
     form = AuthenticationForm()
