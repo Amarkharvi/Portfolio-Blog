@@ -14,7 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ALLOWED_HOSTS=[]
+ALLOWED_HOSTS=['127.0.0.1']
 
 
 # Quick-start development settings - unsuitable for production
@@ -24,7 +24,7 @@ ALLOWED_HOSTS=[]
 SECRET_KEY = '_8jlr)nf@ec6r)-$wdlou65qvutc=+n9*4^2(lnuir8^*d+h%-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 
@@ -89,12 +89,8 @@ WSGI_APPLICATION = 'myblog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'pentdb',
-        'HOST':'localhost',
-        'USER':'postgres',
-        'PASSWORD':'Amtk6592',
-        'PORT':''
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
